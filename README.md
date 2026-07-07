@@ -11,3 +11,31 @@ Posizionamento: casuale a ogni partita, tramite un ciclo che genera riga, colonn
 Temporizzazione: conto alla rovescia di 45 secondi, gestito con setInterval, con cambio colore della barra (verde - giallo - rosso) man mano che il tempo si esaurisce
 
 Elementi creati dinamicamente con JavaScript: le 64 celle della griglia vengono generate una a una con createElement e collegate ai relativi eventi di click, il colore di ogni cella viene assegnato via style.backgroundColor, e i contatori (tentativi effettuati, rimanenti, colpite) vengono aggiornati in tempo reale nell'HTML.
+
+
+
+Funzionalità facoltative aggiunte:
+
+-Contatore di tentativi effettuati e rimanenti (oltre al limite di 45 mosse)
+
+-Contatore delle caselle "nave" colpite, per sapere quante ne mancano su 18
+
+-Timer visivo che cambia colore (verde → giallo a 25s → rosso a 10s) per dare un senso di urgenza
+
+-Messaggio finale di vittoria/sconfitta con stile diverso
+
+-Pulsante "svela" che mostra tutte le navi rimaste, ma solo dopo aver perso
+
+-Pulsante di reset che rigenera una partita completamente nuova (nuova disposizione navi, timer e contatori azzerati) senza dover ricaricare la pagina
+
+
+
+Difficoltà incontrate:
+
+-Far coincidere il posizionamento casuale delle navi senza farle sovrapporre o uscire dalla griglia: risolto con un ciclo che ritenta finché non trova una posizione libera
+
+-Gestire correttamente riga e colonna di ogni cella dentro l'evento di click: usando const dentro il ciclo,così ogni cella "ricorda" le proprie coordinate corrette (altrimenti con let tutte le celle avrebbero puntato all'ultimo indice del ciclo)
+
+-Sincronizzare il colore "logico" della cella (salvato nella matrice) con quello visivo mostrato solo al click, per non svelare le navi in anticipo
+
+-Reset completo dello stato di gioco (timer, colori, contatori, classi CSS) senza lasciare residui della partita precedente
